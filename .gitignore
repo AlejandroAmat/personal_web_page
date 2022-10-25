@@ -1,2 +1,3 @@
-*.pdf
-*.png
+/*
+!spec/404.html
+!spec/index.html
