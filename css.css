@@ -253,6 +253,7 @@ img {
 }
 
 .Education ul {
+    text-align: justify;
     margin-top: 0.7rem;
     margin-bottom: 1.2rem;
     font-size: 1.1rem;
@@ -295,6 +296,7 @@ html {
 .Education_hn {
     width: 100%;
     padding-right: 6rem;
+    text-align: justify;
 }
 
 .Education_hn h1 {
@@ -338,6 +340,7 @@ html {
     font-weight: 500;
     font-size: 1.6rem;
     color: rgb(84, 53, 224);
+    text-align: justify;
 }
 
 .Education h2 {
@@ -348,6 +351,7 @@ html {
     padding-bottom: 0rem;
     margin: 0rem;
     margin-top: 1rem;
+    text-align: justify;
 }
 
 .Education h3 {
@@ -358,11 +362,13 @@ html {
     padding-left: 2.3rem;
     margin-top: 0.5rem;
     margin-bottom: 0rem;
+    text-align: justify;
 }
 
 .Education p {
     padding: 0rem;
     margin-bottom: 0.3rem;
+    text-align: justify;
 }
 
 .piv {
@@ -372,4 +378,29 @@ html {
     justify-content: space-evenly;
     text-align: justify;
     align-items: center;
+}
+
+@media (max-width: 100vh) {
+    .intro {
+        flex-direction: column;
+        width: 100%;
+    }
+    .column {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100vw;
+        height: 20rem;
+        box-shadow: 7px 15px 45px -15px rgba(0, 0, 0, 0.8);
+        background-color: rgba(255, 255, 255, 0.527);
+        position: relative;
+    }
+    .pra {
+        height: 0rem;
+    }
+    .resto {
+        padding-right: 0rem;
+        padding-left: 0rem;
+    }
 }
