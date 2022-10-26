@@ -1,434 +1,463 @@
-         :root {
-            /*Declarem algunes variables:*/
-            --color-primary: #009579;
-            --color-primary-dark: #007f67;
-            --color-secondary: #252c6a;
-            --color-error: #e61515;
-            --color-success: #4bb544;
-            --border-radius: 4px;
-            --primario: #9c27b0;
-            --primariooscuro: #89119d;
-            --secundario: #ffce00;
-            --blanco: #ffffff;
-            --negro: #000;
-        }
-        
-        body {
-            background: rgb(255, 255, 255);
-            /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-            font-family: Helvetica;
-            margin: 0rem;
-            height: 100vh;
-        }
-        
-        img {
-            opacity: 0.9;
-        }
-        /* a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin: 3rem;
+            :root {
+               /*Declarem algunes variables:*/
+               --color-primary: #009579;
+               --color-primary-dark: #007f67;
+               --color-secondary: #252c6a;
+               --color-error: #e61515;
+               --color-success: #4bb544;
+               --border-radius: 4px;
+               --primario: #9c27b0;
+               --primariooscuro: #89119d;
+               --secundario: #ffce00;
+               --blanco: #ffffff;
+               --negro: #000;
+           }
+           
+           body {
+               background: rgb(255, 255, 255);
+               /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+               font-family: Helvetica;
+               margin: 0rem;
+               height: 100vh;
+               text-align: justify;
+           }
+           
+           img {
+               opacity: 0.9;
+           }
+           /* a {
+text-decoration: none;
+color: white;
+font-weight: bold;
+font-size: 1.1rem;
+margin: 3rem;
 } */
-        
-        .intro {
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .resto {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            font-weight: bold;
-            padding-left: 4rem;
-            padding-right: 5rem;
-            font-size: 1.7rem;
-            font-weight: bold;
-            padding-bottom: 3000rem;
-        }
-        
-        .yt {
-            color: rgb(84, 53, 224);
-            opacity: 2;
-            font-weight: 500;
-            text-align: center;
-            font-size: 1.9rem;
-            width: 100%;
-        }
-        
-        .pana {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            justify-content: flex-end;
-        }
-        
-        .image_p {
-            margin-top: 1rem;
-            height: auto;
-            width: 60%;
-            border-radius: 15%;
-        }
-        
-        .textw {
-            margin: 2rem;
-            margin-bottom: 0rem;
-        }
-        
-        .me_text {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(255, 250, 250, 0.33);
-            color: black;
-        }
-        
-        .pabajo {
-            height: 100%;
-            margin: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            text-align: center;
-            font-size: 0.6rem;
-        }
-        
-        .hola a {
-            text-align: center;
-            color: rgb(84, 53, 224);
-            text-decoration: underline;
-            font-weight: 400;
-            font-size: 1rem;
-        }
-        
-        .column {
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            align-items: center;
-            justify-content: flex-start;
-            width: 380px;
-            box-shadow: 7px 15px 45px -15px rgba(0, 0, 0, 0.8);
-            background-color: rgba(255, 255, 255, 0.527);
-            height: 100%;
-        }
-        
-        .imagename h1 {
-            color: rgb(84, 53, 224);
-            font-weight: 400;
-            font-size: 1.6rem;
-            padding-left: 1 rem;
-            padding-right: 1rem;
-        }
-        
-        .imagename h2 {
-            padding-bottom: 1.6rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            color: black;
-            font-weight: 400;
-            font-size: 1.1rem;
-        }
-        
-        .pres {
-            width: 100%;
-            padding: 1rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-        
-        .pres h2 {
-            padding-bottom: 0;
-            color: black;
-            font-weight: 400;
-            font-size: 1rem;
-        }
-        
-        .resto {
-            height: 100vh;
-        }
-        
-        .imagename {
-            text-align: center;
-        }
-        
-        .Redes {
-            width: 100%;
-            padding-left: 3rem;
-            padding-top: 1rem;
-        }
-        
-        .Linkedin {
-            width: 15rem;
-            height: 2.5rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0.5rem;
-        }
-        
-        .Redes h2 {
-            color: rgb(84, 53, 224);
-            font-weight: 400;
-            font-size: 1.3rem;
-            text-decoration: underline;
-        }
-        
-        .imagen_linkedin {
-            width: 15%;
-            height: auto;
-        }
-        
-        .CV {
-            padding: 0.5rem;
-            padding-left: 0.7rem;
-            width: 15rem;
-            height: 2.5rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-        
-        .imagen_CV {
-            width: 12.5%;
-            height: auto;
-            padding-right: 0.3rem;
-        }
-        
-        .Github {
-            padding: 0.5rem;
-            padding-left: 0.7rem;
-            width: 15rem;
-            height: 2.5rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-        
-        .Instagram {
-            padding: 0.5rem;
-            padding-left: 0.7rem;
-            width: 15rem;
-            height: 2.5rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-        
-        .imagen_inst {
-            width: 12%;
-            height: auto;
-            padding-right: 0.3rem;
-        }
-        
-        .imagen_git {
-            width: 12%;
-            height: auto;
-            padding-right: 0.3rem;
-        }
-        
-        .Presentation {
-            font-weight: 400;
-            font-size: 1.2rem;
-        }
-        
-        .column p {
-            padding: 2rem;
-            padding-top: 5rem;
-            padding-bottom: 0.3rem;
-            text-align: center;
-        }
-        
-        .Education {
-            width: 100%;
-        }
-        
-        .Education ul {
-            text-align: justify;
-            margin-top: 0.7rem;
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            font-weight: 400;
-            padding-left: 5rem;
-        }
-        
-        li {
-            padding: 0.13rem;
-        }
-        
-        .pra {
-            min-width: 380px;
-            box-shadow: 7px 15px 45px -15px rgba(0, 0, 0, 0.8);
-            height: 100%;
-        }
-        
-        .optionss {
-            width: 100%;
-            font-size: 1.2rem;
-            padding-bottom: 1.2rem;
-        }
-        
-        .optionss a {
-            padding-left: 2rem;
-            padding-right: 2rem;
-            text-decoration: none;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .separate {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .Education_hn {
-            width: 100%;
-            padding-right: 6rem;
-            text-align: justify;
-        }
-        
-        .Education_hn h1 {
-            font-weight: 500;
-            font-size: 1.6rem;
-            color: rgb(84, 53, 224);
-        }
-        
-        .Education_lang {
-            width: 60%;
-        }
-        
-        .Education_lang h1 {
-            font-weight: 500;
-            font-size: 1.6rem;
-            color: rgb(84, 53, 224);
-        }
-        
-        .Education_lang ul {
-            margin-top: 1.3rem;
-            margin-bottom: 1.2rem;
-            font-size: 1.15rem;
-            font-weight: 400;
-        }
-        
-        .Education_hn ul {
-            margin-top: 1.3rem;
-            margin-bottom: 1.2rem;
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
-        
-        .dble {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding-bottom: 0rem;
-        }
-        
-        .Education h1 {
-            font-weight: 500;
-            font-size: 1.6rem;
-            color: rgb(84, 53, 224);
-            text-align: justify;
-        }
-        
-        .Education h2 {
-            font-weight: 500;
-            font-size: 1.3rem;
-            color: black;
-            font-weight: bold;
-            padding-bottom: 0rem;
-            margin: 0rem;
-            margin-top: 1rem;
-            text-align: justify;
-        }
-        
-        .Education h3 {
-            font-weight: 500;
-            font-size: 1.2rem;
-            color: black;
-            font-weight: bold;
-            padding-left: 2.3rem;
-            margin-top: 0.5rem;
-            margin-bottom: 0rem;
-            text-align: justify;
-        }
-        
-        .Education p {
-            padding: 0rem;
-            margin-bottom: 0.3rem;
-            text-align: justify;
-        }
-        
-        .piv {
+           
+           .intro {
+               display: flex;
+               flex-direction: row;
+           }
+           
+           .resto {
+               width: 100%;
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: flex-start;
+               font-weight: bold;
+               padding-left: 4rem;
+               padding-right: 5rem;
+               font-size: 1.7rem;
+               font-weight: bold;
+               padding-bottom: 3000rem;
+           }
+           
+           .yt {
+               color: rgb(84, 53, 224);
+               opacity: 2;
+               font-weight: 500;
+               text-align: center;
+               font-size: 1.9rem;
+               width: 100%;
+           }
+           
+           .pana {
+               display: flex;
+               flex-direction: row;
+               width: 100%;
+               justify-content: flex-end;
+           }
+           
+           .image_p {
+               margin-top: 1rem;
+               height: auto;
+               width: 60%;
+               border-radius: 15%;
+           }
+           .hola{
             padding-top: 0rem;
-            padding-bottom: 5rem;
-            display: flex;
-            justify-content: space-evenly;
-            text-align: justify;
-            align-items: center;
-        }
-        
-        @media (max-width: 100vh) {
-            .intro {
-                flex-direction: column;
-                width: 100%;
-            }
-            .column {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
+           }
+           .hola a {
+               text-align: center;
+               color: rgb(84, 53, 224);
+               text-decoration: underline;
+               font-weight: 400;
+               font-size: 1rem;
+               
+           }
+           
+           .column {
+               display: flex;
+               flex-direction: column;
+               position: fixed;
+               align-items: center;
+               justify-content: flex-start;
+               width: 380px;
+               box-shadow: 7px 15px 45px -15px rgba(0, 0, 0, 0.8);
+               background-color: rgba(255, 255, 255, 0.527);
+               height: 100%;
+           }
+           
+           .imagename h1 {
+               color: rgb(84, 53, 224);
+               font-weight: 400;
+               font-size: 1.6rem;
+               padding-left: 1 rem;
+               padding-right: 1rem;
+           }
+           
+           .imagename h2 {
+               padding-bottom: 1rem;
+               padding-left: 1rem;
+               padding-right: 1rem;
+               color: black;
+               font-weight: 400;
+               font-size: 1.1rem;
+           }
+           
+           .pres {
+               width: 100%;
+               padding: 1rem;
+               display: flex;
+               flex-direction: row;
+               justify-content: space-around;
+           }
+           
+           .pres h2 {
+               padding-bottom: 0;
+               color: black;
+               font-weight: 400;
+               font-size: 1rem;
+           }
+           
+           .resto {
+               height: 100vh;
+           }
+           
+           .imagename {
+               text-align: center;
+           }
+           
+           .Redes {
+               width: 100%;
+               padding-left: 3rem;
+               padding-top: 2rem;
+           }
+           
+           .Linkedin {
+               width: 15rem;
+               height: 2.5rem;
+               display: flex;
+               flex-direction: row;
+               align-items: center;
+               padding: 0.5rem;
+               margin: 0rem;
+           }
+           
+           .Redes h2 {
+               color: rgb(84, 53, 224);
+               font-weight: 400;
+               font-size: 1.3rem;
+               text-decoration: underline;
+               margin: 0rem;
+           }
+           
+           .imagen_linkedin {
+               width: 15%;
+               height: auto;
+           }
+           
+           .CV {
+               padding: 0.5rem;
+               padding-left: 0.7rem;
+               width: 15rem;
+               height: 2.5rem;
+               display: flex;
+               flex-direction: row;
+               align-items: center;
+           }
+           
+           .imagen_CV {
+               width: 12.5%;
+               height: auto;
+               padding-right: 0.3rem;
+           }
+           
+           .Github {
+               padding: 0.5rem;
+               padding-left: 0.7rem;
+               width: 15rem;
+               height: 2.5rem;
+               display: flex;
+               flex-direction: row;
+               align-items: center;
+           }
+           
+           .Instagram {
+               padding: 0.5rem;
+               padding-left: 0.7rem;
+               width: 15rem;
+               height: 2.5rem;
+               display: flex;
+               flex-direction: row;
+               align-items: center;
+           }
+           
+           .imagen_inst {
+               width: 12%;
+               height: auto;
+               padding-right: 0.3rem;
+           }
+           
+           .imagen_git {
+               width: 12%;
+               height: auto;
+               padding-right: 0.3rem;
+           }
+           
+           .Presentation {
+               font-weight: 400;
+               font-size: 1.2rem;
+           }
+           
+           .column p {
+               padding: 2rem;
+               padding-top: 5rem;
+               padding-bottom: 0.3rem;
+               text-align: center;
+           }
+           
+           .Education {
+               width: 100%;
+           }
+           
+           .Education ul {
+               text-align: justify;
+               margin-top: 0.7rem;
+               margin-bottom: 1.2rem;
+               font-size: 1.1rem;
+               font-weight: 400;
+               padding-left: 5rem;
+           }
+           
+           li {
+               padding: 0.13rem;
+           }
+           
+           .pra {
+               min-width: 380px;
+               box-shadow: 7px 15px 45px -15px rgba(0, 0, 0, 0.8);
+               height: 100%;
+           }
+           
+           .optionss {
+               width: 100%;
+               font-size: 1.2rem;
+               padding-bottom: 1.2rem;
+           }
+           
+           .optionss a {
+               padding-left: 2rem;
+               padding-right: 2rem;
+               text-decoration: none;
+           }
+           
+           html {
+               scroll-behavior: smooth;
+           }
+           
+           .separate {
+               width: 100%;
+               display: flex;
+               flex-direction: row;
+           }
+           
+           .Education_hn {
+               width: 100%;
+               padding-right: 6rem;
+               text-align: justify;
+           }
+           
+           .Education_hn h1 {
+               font-weight: 500;
+               font-size: 1.6rem;
+               color: rgb(84, 53, 224);
+           }
+           
+           .Education_lang {
+               width: 60%;
+           }
+           
+           .Education_lang h1 {
+               font-weight: 500;
+               font-size: 1.6rem;
+               color: rgb(84, 53, 224);
+           }
+           
+           .Education_lang ul {
+               margin-top: 1.3rem;
+               margin-bottom: 1.2rem;
+               font-size: 1.15rem;
+               font-weight: 400;
+           }
+           
+           .Education_hn ul {
+               margin-top: 1.3rem;
+               margin-bottom: 1.2rem;
+               font-size: 1.2rem;
+               font-weight: 400;
+           }
+           
+           .dble {
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+               padding-bottom: 0rem;
+           }
+           
+           .Education h1 {
+               font-weight: 500;
+               font-size: 1.6rem;
+               color: rgb(84, 53, 224);
+               text-align: justify;
+           }
+           
+           .Education h2 {
+               font-weight: 500;
+               font-size: 1.3rem;
+               color: black;
+               font-weight: bold;
+               padding-bottom: 0rem;
+               margin: 0rem;
+               margin-top: 1rem;
+               text-align: justify;
+           }
+           
+           .Education h3 {
+               font-weight: 500;
+               font-size: 1.2rem;
+               color: black;
+               font-weight: bold;
+               padding-left: 2.3rem;
+               margin-top: 0.5rem;
+               margin-bottom: 0rem;
+               text-align: justify;
+           }
+           
+           .Education p {
+               padding: 0rem;
+               margin-bottom: 0.3rem;
+               text-align: justify;
+           }
+           
+           .piv {
+               padding-top: 0rem;
+               padding-bottom: 5rem;
+               display: flex;
+               justify-content: space-evenly;
+               text-align: justify;
+               align-items: center;
+           }
+           
+           @media (max-width: 100vh) {
+               .intro {
+                   flex-direction: column;
+                   width: 100%;
+               }
+               .column {
+                   display: flex;
+                   flex-direction: column;
+                   align-items: center;
+                   justify-content: flex-start;
+                   width: 100vw;
+                   height: 100%;
+                   box-shadow: 7px 15px 45px -15px rgba(0, 0, 0, 0.8);
+                   background-color: rgba(255, 255, 255, 0.527);
+                   position: relative;
+               }
+               .pra {
+                   height: 0rem;
+               }
+               .resto {
+                   padding-right: 0rem;
+                   padding-left: 0rem;
+               }
+               .Redes {
+                   width: 100%;
+                   margin: 0rem;
+                   padding: 0rem;
+                   padding-top: 0.5rem;
+                   display: flex;
+                   flex-direction: row;
+                   justify-content: space-between;
+               }
+               .CV {
+                padding-bottom: 0rem;
+                   justify-content: center;
+                   font-size: 0.7rem;
+               }
+               .Linkedin {
+                padding-bottom: 0rem;
+                   justify-content: center;
+                   font-size: 0.8rem;
+               }
+               .Github {
+                   justify-content: center;
+                   padding-bottom: 0rem;
+                   font-size: 0.8rem;
+               }
+               .Instagram {
+                   justify-content: center;
+                   padding-bottom: 0rem;
+                   font-size: 0.8rem;
+               }
+
+               
+               .imagename {
+                   width: 100vw;
+                   display: flex ;
+                   flex-direction: row;
+                   justify-content: space-evenly;
+                   align-items: center;
+               }
+               .image_p {
+                   height: 10rem;
+                   width: auto;
+               }
+               .imagename h2 {
+                   font-size: 0.8rem;
+                   margin: 0rem;
+                   padding: 0.3rem;
+               }
+
+               .imagename h1 {
+                   font-size: 1rem;
+               }
+               .entire {
+                   display: none;
+               }
+               .pres {
+                   padding: 0rem;
+               }
+               .yle{
                 width: 100vw;
-                height: 100%;
-                box-shadow: 7px 15px 45px -15px rgba(0, 0, 0, 0.8);
-                background-color: rgba(255, 255, 255, 0.527);
-                position: relative;
-            }
-            .pra {
-                height: 0rem;
-            }
-            .resto {
-                padding-right: 0rem;
-                padding-left: 0rem;
-            }
-            .Redes {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-            }
-            .imagename {
-                width: 100%;
-            }
-            .image_p {
-                height: 10rem;
-                width: auto;
-            }
-            .imagename h2 {
+               }
+               .htmlm {
+                   display: none;
+               }
+               .hola a{
                 font-size: 0.8rem;
-            }
-            .imagename h1 {
-                font-size: 1rem;
-            }
-            .entire {
-                display: none;
-            }
-            .pres {
-                padding: 0rem;
-            }
-            .y {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
+               }
+               .imagen_CV{
+                width: 10%;
+               }
+               .imagen_git{
+                width: 10%;
+               }
+               .imagen_inst{
+                width: 10%;
+               }
+               .imagen_linkedin{
+                width: 10%;
+               }
+           }
