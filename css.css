@@ -50,7 +50,7 @@ img {
     padding-right: 5rem;
     font-size: 1.7rem;
     font-weight: bold;
-    padding-bottom: 150rem;
+    padding-bottom: 3000rem;
 }
 
 .yt {
@@ -366,7 +366,10 @@ html {
 }
 
 .piv {
-    padding-top: 4rem;
+    padding-top: 0rem;
+    padding-bottom: 5rem;
     display: flex;
     justify-content: space-evenly;
+    text-align: justify;
+    align-items: center;
 }
