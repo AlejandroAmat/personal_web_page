@@ -673,7 +673,7 @@ margin: 3rem;
                 }
            }
 
-           @media (min-width : 160vh) and (max-width: 1000px) {
+           @media (min-width : 160vh) and (max-width: 600px) {
 
             .intro {
                 flex-direction: column;
