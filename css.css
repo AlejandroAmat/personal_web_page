@@ -372,7 +372,7 @@ margin: 3rem;
             font-weight:400 ; padding-top: 3rem; padding-right: 2rem
            }
            
-           @media (max-width: 120vh) {
+           @media (max-width: 120vh){
                .intro {
                    flex-direction: column;
                    width: 100%;
@@ -672,5 +672,308 @@ margin: 3rem;
 
                 }
            }
+
+           @media (min-width : 210vh) {
+
+            .intro {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+            .Education h1 {
+             font-weight: 500;
+             font-size: 1.2rem;
+             color: rgb(84, 53, 224);
+             text-align: justify;
+         }
+         
+         .Education h2 {
+             font-weight: 500;
+             font-size: 0.9rem;
+             color: black;
+             font-weight: bold;
+             padding-bottom: 0rem;
+             margin: 0rem;
+             margin-top: 1rem;
+             text-align: justify;
+             text-align: start;
+         }
+         
+         .Education h3 {
+             font-weight: 500;
+             font-size: 0.8rem;
+             color: black;
+             font-weight: bold;
+             padding-left: 1.4rem;
+             margin-top: 0.5rem;
+             margin-bottom: 0rem;
+             text-align: justify;
+             padding-left: 1rem;
+             text-align: start;
+         }
+         
+         
+         .Education ul{
+             font-size: 0.75rem;
+             padding-left: 2.2rem;
+             padding-top: 0rem;
+             padding-bottom: 0rem;
+             margin-bottom: 0.3rem;
+             margin-top: 0.4rem;
+             text-align: start;
+             
+         }
+         
+         
+            .column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                height: 100%;
+                box-shadow: 0px 15px 10px -15px rgba(116, 109, 109, 0.8);
+                background-color: rgba(255, 255, 255, 0.527);
+                position: relative;
+            }
+            .pra {
+                height: 0rem;
+            }
+            
+            .Redes {
+                width: 100%;
+                margin: 0rem;
+                padding: 0rem;
+                padding-top: 0.5rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .CV {
+             padding-bottom: 0rem;
+                justify-content: center;
+                font-size: 0.7rem;
+            }
+            .Linkedin {
+             padding-bottom: 0rem;
+                justify-content: center;
+                font-size: 0.8rem;
+            }
+            .Github {
+                justify-content: center;
+                padding-bottom: 0rem;
+                font-size: 0.8rem;
+            }
+            .Instagram {
+                justify-content: center;
+                padding-bottom: 0rem;
+                font-size: 0.8rem;
+            }
+            .resto{
+             padding: 0rem;
+             width: 83%;
+            }
+            
+            .imagename {
+                width: 100vw;
+                display: flex ;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .image_p {
+                padding-left: 1rem;
+                width: 10%;
+            }
+            .imagename h2 {
+                font-size: 0.7rem;
+                margin: 0rem;
+                padding: 0.3rem;
+            }
+
+            .imagename h1 {
+                font-size: 0.9rem;
+            }
+            .entire {
+                display: none;
+            }
+            .pres {
+                padding: 0rem;
+            }
+            .yle{
+             width: 100vw;
+            }
+            .htmlm {
+                display: none;
+            }
+            .hola a{
+             font-size: 0.65rem;
+            }
+            .imagen_CV{
+             padding-bottom: 0.1rem;
+             width: 12%;
+            }
+            .imagen_git{
+             width: 12%;
+            }
+            .imagen_inst{
+             width: 12%;
+            }
+            .imagen_linkedin{
+             width: 14%;
+            }
+            .resto p{
+             font-size: 1.4rem;
+            }
+            .optionss{
+             font-size: 0.7rem;
+             padding-left: 0rem;
+             margin-left: 0rem;
+            
+            }
+            .optionss a{
+             padding: 0.2rem;
+            }
+             .Presentation{
+                 width: 100%;
+                 
+             }
+             .Presentation p{
+                 font-size: 0.8rem;
+                 text-align:start;
+             }
+             .body{
+                 text-align: left;
+             }
+             .dble h3{
+                 display: none;
+             }
+             .html{
+                 scroll-behavior: auto;
+             }
+             .separate{
+                 flex-direction: column;
+             }
+             .Education_hn h1 {
+                 font-weight: 500;
+                 font-size: 1.2rem;
+                 color: rgb(84, 53, 224);
+                 text-align: justify;
+             }
+             
+             .Education_hn h2 {
+                 font-weight: 500;
+                 font-size: 0.9rem;
+                 color: black;
+                 font-weight: bold;
+                 padding-bottom: 0rem;
+                 margin: 0rem;
+                 margin-top: 1rem;
+                 text-align: justify;
+                 text-align: start;
+             }
+             
+             .Education_hn h3 {
+                 font-weight: 500;
+                 font-size: 0.8rem;
+                 color: black;
+                 font-weight: bold;
+                 padding-left: 1.4rem;
+                 margin-top: 0.5rem;
+                 margin-bottom: 0rem;
+                 text-align: justify;
+                 padding-left: 1rem;
+                 text-align: start;
+             }
+             
+             
+             .Education_hn ul{
+                 font-size: 0.75rem;
+                 padding-left: 2.2rem;
+                 padding-top: 0rem;
+                 padding-bottom: 0rem;
+                 margin-bottom: 0.3rem;
+                 margin-top: 0.4rem;
+                 text-align: start;
+                 
+             }
+
+             .Education_lang h1 {
+                 font-weight: 500;
+                 font-size: 1.2rem;
+                 color: rgb(84, 53, 224);
+                 text-align: justify;
+             }
+             
+             .Education_lang h2 {
+                 font-weight: 500;
+                 font-size: 0.9rem;
+                 color: black;
+                 font-weight: bold;
+                 padding-bottom: 0rem;
+                 margin: 0rem;
+                 margin-top: 1rem;
+                 text-align: justify;
+                 text-align: start;
+             }
+             
+             .Education_lang h3 {
+                 font-weight: 500;
+                 font-size: 0.8rem;
+                 color: black;
+                 font-weight: bold;
+                 padding-left: 1.4rem;
+                 margin-top: 0.5rem;
+                 margin-bottom: 0rem;
+                 text-align: justify;
+                 padding-left: 1rem;
+                 text-align: start;
+             }
+             
+             
+             .Education_lang ul{
+                 font-size: 0.75rem;
+                 padding-left: 2.2rem;
+                 padding-top: 0rem;
+                 padding-bottom: 0rem;
+                 margin-bottom: 0.3rem;
+                 margin-top: 0.4rem;
+                 text-align: start;
+                 
+             }
+             .Education_lang{
+                 width: 100%;
+             }
+             .Education_hn{
+                 width: 100%;
+             }
+             .piv{
+                 width: 100%;
+                 flex-direction: column;
+                 padding: 0rem;
+                 padding-bottom: 3rem;
+             }
+             .txt_p{
+                 width: 100%;
+                 padding: 0rem;
+                 
+             }
+             .txt_p h3{
+                 text-align: justify;
+                 font-size: 0.7rem;
+                 padding: 0rem;
+                 padding-top: 1.2rem;
+                 margin: 0rem;
+                 font-weight: 400;
+             }
+             .ii{
+                 width: 30%;
+                 margin: 0rem;
+                 padding: 0rem;
+                 box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.8);
+
+             }
+
+           } 
 
           
