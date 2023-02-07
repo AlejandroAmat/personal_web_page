@@ -53,12 +53,13 @@ margin: 3rem;
            }
            
            .yt {
-               color: rgb(84, 53, 224);
+               color: black;
                opacity: 2;
                font-weight: 500;
                text-align: center;
                font-size: 1.9rem;
                width: 100%;
+               padding-top: 3.9rem;
            }
            
            .pana {
@@ -79,7 +80,7 @@ margin: 3rem;
            }
            .hola a {
                text-align: center;
-               color: rgb(84, 53, 224);
+               color: black;
                text-decoration: underline;
                font-weight: 400;
                font-size: 1rem;
@@ -99,7 +100,7 @@ margin: 3rem;
            }
            
            .imagename h1 {
-               color: rgb(84, 53, 224);
+               color: black;
                font-weight: 400;
                font-size: 1.6rem;
                padding-left: 1 rem;
@@ -155,7 +156,7 @@ margin: 3rem;
            }
            
            .Redes h2 {
-               color: rgb(84, 53, 224);
+               color: black;
                font-weight: 400;
                font-size: 1.3rem;
                text-decoration: underline;
@@ -281,7 +282,7 @@ margin: 3rem;
            .Education_hn h1 {
                font-weight: 500;
                font-size: 1.6rem;
-               color: rgb(84, 53, 224);
+               color: black;
            }
            
            .Education_lang {
@@ -291,7 +292,7 @@ margin: 3rem;
            .Education_lang h1 {
                font-weight: 500;
                font-size: 1.6rem;
-               color: rgb(84, 53, 224);
+               color: black;
            }
            
            .Education_lang ul {
@@ -318,7 +319,7 @@ margin: 3rem;
            .Education h1 {
                font-weight: 500;
                font-size: 1.6rem;
-               color: rgb(84, 53, 224);
+               color: black;
                text-align: justify;
            }
            
@@ -381,7 +382,7 @@ margin: 3rem;
                .Education h1 {
                 font-weight: 500;
                 font-size: 1.2rem;
-                color: rgb(84, 53, 224);
+                color: black;
                 text-align: justify;
             }
             
@@ -555,7 +556,7 @@ margin: 3rem;
                 .Education_hn h1 {
                     font-weight: 500;
                     font-size: 1.2rem;
-                    color: rgb(84, 53, 224);
+                    color: black;
                     text-align: justify;
                 }
                 
@@ -599,7 +600,7 @@ margin: 3rem;
                 .Education_lang h1 {
                     font-weight: 500;
                     font-size: 1.2rem;
-                    color: rgb(84, 53, 224);
+                    color: black;
                     text-align: justify;
                 }
                 
@@ -683,7 +684,7 @@ margin: 3rem;
             .Education h1 {
              font-weight: 500;
              font-size: 1.2rem;
-             color: rgb(84, 53, 224);
+             color: black;
              text-align: justify;
          }
          
@@ -857,7 +858,7 @@ margin: 3rem;
              .Education_hn h1 {
                  font-weight: 500;
                  font-size: 1.2rem;
-                 color: rgb(84, 53, 224);
+                 color: black;
                  text-align: justify;
              }
              
@@ -901,7 +902,7 @@ margin: 3rem;
              .Education_lang h1 {
                  font-weight: 500;
                  font-size: 1.2rem;
-                 color: rgb(84, 53, 224);
+                 color: black;
                  text-align: justify;
              }
              
