@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Alejandro Amat</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="WhatsApp Image 2023-01-29 at 22.41.02.jpeg" />
+
+</head>
+
+
+<body>
+    
+
+
+
+    <div class="txt_p
+                    ">
+                    
+                    <h1>Advanced Skin Detection with MATLAB: A Mathematical Approach</h1>
+        <p>As part of our Image Processing Laboratory project, we, Alejandro Amat and Pablo Díaz, under the guidance of professor Oscar Pina, embarked on developing a skin detection algorithm using MATLAB. This document outlines the mathematical and statistical models that form the backbone of our approach.</p>
+        <div class="doubleImage">
+            <img src="img/Captura de pantalla 2024-03-25 a las 1.20.34.png" width="30%">
+        </div>
+        <h2>Project Objective</h2>
+        <p>The primary aim is to classify image pixels into skin or non-skin categories, leveraging a dataset of 101 images for training our model. This entails the identification and analysis of pixels exhibiting skin-like properties based on color and texture.</p>
+        
+        <h2>Statistical Model for Skin Detection</h2>
+        <p>Our approach uses a statistical model to differentiate skin pixels from others. The model is based on the hypothesis:</p>
+        <ul>
+            <li>H0: Pixel belongs to skin class.</li>
+            <li>H1: Pixel does not belong to skin class.</li>
+        </ul>
+        <p>We denote the pixel value by <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><sub><mi>i</mi>,<mi>j</mi></sub></math>, where <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math> and <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>j</mi></math> are the pixel indices.</p>
+        
+        <h2>Color Space Transformation</h2>
+        <p>To effectively process images, we transform them into the YCbCr color space, focusing on the Cb and Cr chrominance components. This transformation facilitates the distinction between skin and non-skin pixels:</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mi>images</mi><mo>{</mo><mi>i</mi><mo>}</mo><mo>=</mo><mi>rgb2ycbcr</mi><mo>(</mo><mi>images</mi><mo>{</mo><mi>i</mi><mo>}</mo><mo>)</mo>
+        </math>
+        
+        <h2>Creating and Comparing Histograms</h2>
+        <p>Two histograms are created from the training images: one for skin pixels and another for the background. These histograms help in calculating the conditional chroma probabilities, following the Bayesian decision criterion:</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mi>log</mi><mo>(</mo><mi>P</mi><mo>(</mo><mi>C</mi><mo>|</mo><mi>p</mi><mo>)</mo> <mo>*</mo> <mi>P</mi><mo>(</mo><mi>p</mi><mo>)</mo><mo>)</mo> <mo>&#x2265;</mo> <mi>log</mi><mo>(</mo><mi>P</mi><mo>(</mo><mi>C</mi><mo>|</mo><mi>f</mi><mo>)</mo> <mo>*</mo> <mi>P</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>)</mo>
+        </math>
+        <p>This equation allows us to decide if a pixel is more likely to be skin or not based on the calculated probabilities.</p>
+        
+        <h2>Evaluation Metrics</h2>
+        <p>Performance is measured using Precision, Recall, and the F-S
+                            
+            <div style=" padding-top: 3rem;padding-bottom: 4rem; display: flex; justify-content: center; flex-direction:column; align-items: center;">
+                <br><br> To check the code at Github:   <strong><a href="https://github.com/AlejandroAmat/PIV ">link</a></strong>   <br> For a more detailed explanation:   <strong><a href="mem_1.1.1.pdf ">Document</a></strong></h3> 
+            </div>
+            </div>
+                         
+</body>

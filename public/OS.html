@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Alejandro Amat</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="WhatsApp Image 2023-01-29 at 22.41.02.jpeg" />
+
+</head>
+
+
+<body>
+    
+
+    <div class="txt_p
+                    ">
+                    <h1>Operating System Kernel Implementation</h1>
+
+                    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 2.14.15.png" width="25%">
+                    </div>
+                            <h3 >
+                            This project consisted of creating from scratch (or nearly) a basic & functional Operating System Kernel. It was basically programmed in C and x86 assembler, as accesing system memory data was needed. This can only be done by entering Protected mode or System mode (Which can only be activated by assembler code. In our case, the call to: 'Sysenter'. There are more). As we did not do the File System, the functionalities and goals can be divided in 2: <br><br>  <strong>Interruptions & Syscalls: </strong> <br><br>Interruptions & Syscalls have nearly the same behaviour so I will only mention Syscalls which are more complex. Basically a Syscall is a method that is managed by the Operating System and has to acces protected mode to execute it. Fork(), write(), read() & open() are some examples. As you may notice, it has to enter system mode as the call is accessing Hardware and Structures not accesible to the user. <br><br> The first thing that is needed is a Wrapper for the Syscall. This is used to try to have compatibility in diferent Operating Systems. When calling a Syscall, it will again call the Wrapper. This Wrapper is in assembly code and is in charge of passing the parameters of the function (By moving the registers relative to EBP to the stack), stacking the value of the call from the Syscall Table and then entering System Mode. Once here, we access the SystemCall Handler. Its responsible for saving the user's Stack and managing the System Stack (saving Hardware registries pointing to the point of the stack or to the next user instruction). It also checks if the value passed as parameter refering to the number os Syscall is available at the Syscall Table, which it will after call. This is pointing to the direction of memory where the code for sys_call is found. Depending on the call, the code will be different. It is done in C.
+                         <br> <br> <strong>Process Management:</strong> <br><br> Processes are the fundamental element in any OS. They do everything. For a process to be considered as so a System structure is needed. In our case, we used a defined t_struct where we had the Identifier of the process (4bytes), the process stack (1024bytes), the actual state (4bytes) and a pointer to another process in the same state (4bytes). <br> <br> Knowing the state of the process is crucial because they are divided (in very simple OS) in 4 categories: RUNNING (process taking CPU), READY (ready to take CPU), WAITING (suspended due to a syscall or interrupt), ZOMBIE (killed process but still not confirmed by parent). We could also consider NEW, but in our case we set them to READY just when forking(). So, one of the most important things to do is create a system that tells the CPU which process choose to run. For this, we checked every clock interrupt (That depends on the Processor frequency) how much time a process had been running. We would then, based on some principle, get one of the processes in the READY queue (Which was not a queue structure but pointers to other processes) and put it to run. This is known as the Task_switch(). 
+                         <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 2.03.13.png" width="60%">
+                         </div>
+                        
+                        
+                         <br><br>Finally, the most complex part was doing the fork(). It is important to understand that all processes have a Parent (Except INIT{0}) so everytime a new process is created it is due to a cloning of the parent. This is, the fork(). The complexity of this call resides in the cloning of memory from one process to another. This is due to the fact that every process has its own "Instruction translator
+                    " called Page table which translates its logical directions to physical ones. The problem is that when we fork() we have to change this Page Table; So accessing again the father's memory directions requires an alternative solution. I will not give more details about this but you may check the code at Github.  It is worth mentioning, that previously it is important to check if there are enough physical pages in memory to clone the process. Finally, after asigning a PID (Process Identifier) the system is ready to perform the task_switch. In our case, as our process structure included the PID with the stack, when copying it, we did not have to copy the stack again in the memory allocation process. 
+                    
+                    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 2.05.23.png" width="60%">
+                    </div>
+                    <br><br> To check the complete and explained code at Github:   <strong><a href="https://github.com/AlejandroAmat/ZEOS_kernel_implementation ">link</a></strong> </h3>
+                     
+                        </div>
+</body>

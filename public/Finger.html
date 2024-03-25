@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Alejandro Amat</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="WhatsApp Image 2023-01-29 at 22.41.02.jpeg" />
+
+</head>
+
+
+<body>
+    
+    <div class="txt_p ">
+        <h1>Finger Detector in Matlab</h1>    
+
+        <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 1.47.38.png" width="30%">
+        </div> 
+
+<h2>Deep Dive into the Algorithm Development</h2>
+    <p>The core of our project involves the development of a sophisticated algorithm designed to process images and identify finger counts accurately. This process includes several stages, starting from preprocessing the images for optimal algorithm performance, followed by the application of morphological operations to highlight the features of interest, and concluding with post-processing to refine the results and accurately determine the number of fingers.</p>
+
+    <h2>The Approach to Solution</h2>
+    <p>Our approach begins with analyzing the binary mask of the hand, aiming to identify and separate the fingers from the rest of the hand and background. Given the binary nature of our input, traditional image processing techniques such as edge detection and morphological transformations play a crucial role. One significant step involves calculating the distance of each skin pixel to the nearest background pixel, utilizing this information to identify potential finger regions based on predetermined distance thresholds.</p>
+    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 1.48.10.png" width="30%">
+    </div>
+    <p>Following the identification of potential finger regions, the challenge of distinguishing fingers from the palm and forearm arises. This problem is tackled through innovative use of morphological operations, specifically designed to enhance finger-like structures while minimizing the influence of connected palm and forearm areas. By iteratively refining our approach and adjusting parameters such as the size and shape of the structuring elements used in morphological operations, we fine-tune the process to enhance accuracy and robustness.</p>
+    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 1.48.34.png" width="30%">
+    </div>
+    <p>The culmination of this process involves a detailed analysis of the resulting finger regions, considering factors such as size, shape, and relative position to eliminate false positives and accurately count the number of fingers. This stage is critical for ensuring the reliability of our results, employing both quantitative metrics and qualitative assessment to validate our methodology.</p>
+    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 1.48.42.png" width="20%">
+    </div>
+    <h2>Results and Analysis</h2>
+    <p>Our method's effectiveness is evaluated based on its precision in finger detection, employing a dual metric system that considers both the accuracy of finger count and the correctness of finger identification. This rigorous analysis allows us to refine our algorithm continually, optimizing parameters and enhancing the system's overall performance. The quantitative results underscore the algorithm's capability to adapt to various hand orientations and configurations, demonstrating robustness and flexibility in finger recognition tasks.</p>
+    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 1.53.37.png" width="30%">
+    </div>
+    <h2>Future Directions and System Improvements</h2>
+    <p>Reflecting on our journey and the challenges encountered, we recognize the potential for further enhancements and the exploration of new methodologies. The advent of machine learning and deep learning presents exciting opportunities for advancing finger recognition technologies. By integrating neural network models trained on extensive datasets, we anticipate significant improvements in accuracy, adaptability, and efficiency. This future work will focus on harnessing the power of artificial intelligence to transcend the limitations of traditional image processing techniques, paving the way for innovative solutions in digital image analysis.</p>
+</body>
+
+<br> <br> For a more detailed explanation:   <strong><a style="padding: 5rem;" href="PIV_LAB2.pdf ">Document</a></strong></h3> 
+    </div>
+
+</body>

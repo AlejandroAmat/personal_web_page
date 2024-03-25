@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Alejandro Amat</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="WhatsApp Image 2023-01-29 at 22.41.02.jpeg" />
+
+</head>
+
+
+<body>
+    
+
+    <div class="txt_p
+                    ">
+                    <h1>JPEG GPU optimization with CUDA (GPU-DCT)</h1>
+
+                    <p>
+                        This project explores the application of CUDA, NVIDIA's parallel computing architecture, in the field of image compression, specifically focusing on the JPEG format. By leveraging the computational power of GPUs, the project aims to significantly enhance the efficiency and speed of JPEG compression processes. 
+                    </p>
+                </section>
+                <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 2.34.37.png" width="40%">
+                </div>
+
+                <section>
+                    <h2>Initial Explanation of DCT and JPEG Compression</h2>
+                    <p>
+                        The JPEG compression algorithm is built on the principle of reducing image data size while maintaining visual quality. At the heart of this process is the Discrete Cosine Transform (DCT), which transforms spatial domain pixels into the frequency domain. The essence of DCT is to identify parts of the image where the color changes gradually and compress these areas more aggressively than those with high color variation. This is because the human eye is less sensitive to detailed color differences in areas of gradual change.
+                    </p>
+                    
+                    <div class="doubleImage" style="padding-top: 0rem;"><img src="img/Captura de pantalla 2024-03-25 a las 2.35.41.png" width="40%">
+                    </div>
+                    <p>
+                    Following the DCT, quantization is applied to the transformed coefficients. Quantization reduces the precision of the image's frequency components, particularly those less perceptible to the human eye. By applying a quantization matrix that scales down the less visible frequencies more than the more visible ones, significant data reduction is achieved with minimal loss of visual fidelity.
+                    </p>
+                    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 2.37.17.png" width="40%">
+                    </div>
+                    <p>
+                    The final step in the JPEG compression process involves entropy coding, typically using Huffman coding. This step exploits the statistical nature of the quantized coefficients, encoding the more frequent, smaller values with shorter codes, and the less frequent, larger values with longer codes. This variability in code length further compresses the image data.
+                    </p>
+                    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 2.32.38.png" width="40%">
+                    </div>
+                    <p>
+                    The combination of these techniques allows JPEG to achieve high compression ratios, making it ideal for storing and transmitting images where bandwidth or storage efficiency is crucial. The project's implementation of these steps in CUDA aimed to exploit GPU parallelism, significantly accelerating the compression process by processing multiple image blocks concurrently.
+                    </p>
+                <section>
+                    <h2>Objectives</h2>
+                    <p>The main objectives of the project are to:</p>
+                    <ul>
+                        <li>Implement a JPEG compression algorithm in C++ for CPU.</li>
+                        <li>Adapt and optimize the algorithm for CUDA to exploit GPU parallelization.</li>
+                        <li>Analyze performance improvements and understand the impact of CUDA optimizations on the compression process.</li>
+                    </ul>
+                </section>
+            
+                
+            
+                <section>
+                    <h2>Initial Implementation in C++</h2>
+                    <p>
+                        The first phase involved developing a JPEG compression algorithm in C++. This provided a baseline for performance comparison and ensured a correct understanding of the compression process, essential for effective CUDA implementation. Example of the IDCT code extract:
+                    </p>
+                    <div class="doubleImage"><img src="img/Captura de pantalla 2024-03-25 a las 2.40.20.png" width="30%">
+                    </div>
+                </section>
+            
+                <section>
+                    <h2>Transition to CUDA and GPU Parallelization</h2>
+                    <p>
+                        Moving to CUDA involved several key steps, each critical for harnessing the GPU's computational capabilities effectively:
+                    </p>
+                    <ul>
+                        <li><strong>Memory Management:</strong> Efficient use of memory is crucial in CUDA. Techniques such as pinned memory and careful management of host and device memory transfers were employed to minimize latency.</li>
+                        <li><strong>Kernel Optimization:</strong> The core of CUDA's performance advantage lies in its kernels. For JPEG compression, separate kernels were developed for the DCT, quantization, and inverse DCT processes, each optimized for maximum parallel efficiency.</li>
+                        <li><strong>Block-wise Processing:</strong> Given JPEG's block-based compression scheme, CUDA's ability to process multiple 8x8 blocks in parallel was a natural fit. This was exploited to significantly speed up the DCT and quantization steps.</li>
+                        <li><strong>Algorithmic Optimizations:</strong> Modifications to the traditional JPEG algorithm were made to better suit GPU architectures. This included rethinking the DCT computation to reduce dependency on sequential calculations and leveraging shared memory within CUDA for faster data access.</li>
+                    </ul>
+                    <p>
+                        These CUDA-specific optimizations resulted in a dramatic improvement in compression time, showcasing the GPU's potential to accelerate computationally intensive tasks.
+                    </p>
+
+                    <section>
+                        <h2>Detailed GPU Techniques for JPEG Compression</h2>
+                        <p>
+                            Efficient memory management is crucial in CUDA to reduce the overhead of memory transfers between the host (CPU) and the device (GPU). The project utilized <strong>pinned memory (page-locked memory)</strong> to allow direct DMA (Direct Memory Access) transfers, significantly speeding up the read/write operations between the CPU and GPU. This method was particularly beneficial for handling large image data sets during the compression process.
+                        </p>
+                        <p>
+                            <strong>Kernel optimization</strong> was another focus area. The project developed specific kernels for the Discrete Cosine Transform (DCT), quantization, and entropy coding steps. Each kernel was designed to maximize parallel execution across the GPU's cores. By analyzing the computational dependencies of each step, the project implemented optimizations such as loop unrolling in DCT calculations and memory coalescing in data read/write operations to enhance throughput and reduce latency.
+                        </p>
+                        <p>
+                            The <strong>use of shared memory</strong> within the GPU for frequently accessed data drastically reduced the global memory access time. This was particularly effective for the DCT process, where block data could be loaded into shared memory, allowing for faster access by multiple threads performing the transform and quantization steps.
+                        </p>
+                        <p>
+                            To further optimize performance, the project employed <strong>dynamic parallelism</strong> for the entropy coding phase, enabling kernels to spawn new kernels. This approach allowed for adapting to the varying complexity of image blocks in real-time, ensuring efficient use of the GPU's resources by dynamically adjusting the workload distribution.
+                        </p>
+                    </section>
+                </section>
+            
+                <section>
+                    <h2>Performance Analysis and Results</h2>
+                    <p>
+                        The final phase of the project involved a comprehensive analysis of the performance gains achieved through CUDA. Benchmarks demonstrated not only a significant reduction in compression time but also highlighted the scalability of GPU processing for larger images or higher compression rates.
+                    </p>
+                </section>
+            
+                <section>
+                    <h2>Conclusion</h2>
+                    <p>
+                        This project underscores the effectiveness of GPU acceleration for image processing tasks, particularly JPEG compression. Through meticulous optimization and leveraging CUDA's parallel computing capabilities, it was possible to achieve significant performance enhancements, opening new avenues for real-time image processing applications. Simplified Code:
+                    </p>
+                </section>
+
+                <pre style="padding-left: 10rem;"><code>
+                    // Este es un comentario en C++
+                    #include &lt;stdio.h&gt;
+                    #include &lt;stdlib.h&gt;
+                    #include &lt;sys/times.h&gt;
+                    #include &lt;sys/resource.h&gt;
+                    
+                    #include &lt;iostream&gt;
+                    #include &lt;vector&gt;
+                    #include &lt;cmath&gt;
+                    
+                    #include &lt;cstdlib&gt;
+                    #include &lt;cstdio&gt;
+                    #include &lt;chrono&gt;
+                    
+                    #include "cuda_runtime.h"
+                    #include "device_launch_parameters.h"
+                    
+                    #define STB_IMAGE_IMPLEMENTATION
+                    #include "./stb_image.h"
+                    #define STB_IMAGE_WRITE_IMPLEMENTATION
+                    #include "./stb_image_write.h"
+                    
+                    #define PINNED 0
+                    #define THREADS 4096
+                    
+                    using namespace std;
+                    
+                    const int BLOCK_SIZE = 8;
+                    
+                    // Tabla de cuantificación estándar para luminancia
+                    __device__ const int luminanceQuantizationTable[BLOCK_SIZE][BLOCK_SIZE] = {
+                        {16, 11, 10, 16, 24, 40, 51, 61},
+                        {12, 12, 14, 19, 26, 58, 60, 55},
+                        {14, 13, 16, 24, 40, 57, 69, 56},
+                        {14, 17, 22, 29, 51, 87, 80, 62},
+                        {18, 22, 37, 56, 68, 109, 103, 77},
+                        {24, 35, 55, 64, 81, 104, 113, 92},
+                        {49, 64, 78, 87, 103, 121, 120, 101},
+                        {72, 92, 95, 98, 112, 100, 103, 99}
+                    };
+                    
+                    __global__ void performDCT_GPU(float* input, float* output, float* output2, int factor, int it) {
+                        // Obtener las coordenadas globales del hilo
+                        int u = blockIdx.x * blockDim.x + threadIdx.x;
+                        int v = blockIdx.y * blockDim.y + threadIdx.y;
+                        
+                        // Calcular DCT para el bloque
+                        if (u &lt; BLOCK_SIZE &amp;&amp; v &lt; BLOCK_SIZE){
+                            double cu = (u == 0) ? 1.0 : 2.0;
+                            double cv = (v == 0) ? 1.0 : 2.0;
+                            float sum = 0.0;
+                            for (int i = 0; i &lt; BLOCK_SIZE; ++i) {
+                                for (int j = 0; j &lt; BLOCK_SIZE; ++j) {
+                                    sum += input[i * BLOCK_SIZE + j] *
+                                        cos((2 * i + 1) * u * M_PI / (2.0 * BLOCK_SIZE)) *
+                                        cos((2 * j + 1) * v * M_PI / (2.0 * BLOCK_SIZE));
+                                }
+                            }
+                            sum = sum * sqrt(cu) * sqrt(cv) / BLOCK_SIZE;
+                            output[u * BLOCK_SIZE + v] = sum;
+                            
+                            output[u*BLOCK_SIZE + v] /= factor * luminanceQuantizationTable[u][v];
+                            output[u*BLOCK_SIZE + v] = round(output[u*BLOCK_SIZE + v]);
+                            output[u*BLOCK_SIZE + v] *= factor*luminanceQuantizationTable[u][v];
+                            output[u*BLOCK_SIZE + v] = round(output[u*BLOCK_SIZE + v]);
+                    
+                            if (it == 1) {
+                               printf("%4.6f ", output[u * BLOCK_SIZE + v]);
+                            }
+                        }
+                    
+                        __syncthreads();
+                        if (u &lt; BLOCK_SIZE &amp;&amp; v &lt; BLOCK_SIZE){
+                            double sum = 0.0;
+                        for (int i = 0; i &lt; BLOCK_SIZE; ++i) {
+                           for (int j = 0; j &lt; BLOCK_SIZE; ++j) {
+                            double cu = (i == 0) ? 1/std::sqrt(2.0) : 1.0;
+                            double cv = (j == 0) ? 1/std::sqrt(2.0) : 1.0;
+                            sum += cu * cv * (output[i * BLOCK_SIZE + j]) *
+                                std::cos((2 *u + 1) * i * M_PI / (2.0 * BLOCK_SIZE)) *
+                                std::cos((2 * v + 1) * j * M_PI / (2.0 * BLOCK_SIZE));
+                                }
+                                }
+                                sum = 2 * sum / BLOCK_SIZE;
+                                output2[u * BLOCK_SIZE + v] = round(sum);
+                                }
+                                }
+                                
+                                // Función para realizar la cuantificación en un bloque
+                                void performQuantization(float* block, const int quantizationTable[BLOCK_SIZE][BLOCK_SIZE], int factor) {
+                                for (int i = 0; i < BLOCK_SIZE; ++i) {
+                                for (int j = 0; j < BLOCK_SIZE; ++j) {
+                                block[iBLOCK_SIZE + j] /= factor * quantizationTable[i][j];
+                                block[iBLOCK_SIZE + j] = round(block[i*BLOCK_SIZE + j]);
+                                }
+                                }
+                                }
+                                
+                                void performQuantizationMult(float* block, const int quantizationTable[BLOCK_SIZE][BLOCK_SIZE], int factor, int it) {
+                                for (int i = 0; i < BLOCK_SIZE; ++i) {
+                                for (int j = 0; j < BLOCK_SIZE; ++j) {
+                                if (it == 1) cout << block[iBLOCK_SIZE + j] << ' ';
+                                block[iBLOCK_SIZE + j] /= factor * quantizationTable[i][j];
+                                block[iBLOCK_SIZE + j] = round(block[iBLOCK_SIZE + j]);
+                                block[iBLOCK_SIZE + j] = factorquantizationTable[i][j];
+                                block[iBLOCK_SIZE + j] = round(block[i*BLOCK_SIZE + j]);
+                                }
+                                }
+                                }
+                                
+                                // Función para realizar la Transformada Discreta Inversa del Coseno (IDCT) en un bloque
+                                global void performIDCT_GPU(float* input, float* output) {
+                                int i = blockIdx.x * blockDim.x + threadIdx.x;
+                                int j = blockIdx.y * blockDim.y + threadIdx.y;
+                                
+                                scss
+                                Copy code
+                                if (i &lt; BLOCK_SIZE && j &lt; BLOCK_SIZE){
+                                    double sum = 0.0;
+                                    
+                                    for (int u = 0; u &lt; BLOCK_SIZE; ++u) {
+                                        for (int v = 0; v &lt; BLOCK_SIZE; ++v) {
+                                            double cu = (u == 0) ? 1/std::sqrt(2.0) : 1.0;
+                                            double cv = (v == 0) ? 1/std::sqrt(2.0) : 1.0;
+                                            sum += cu * cv * (input[u * BLOCK_SIZE + v]) *
+                                                   std::cos((2 * i + 1) * u * M_PI / (2.0 * BLOCK_SIZE)) *
+                                                   std::cos((2 * j + 1) * v * M_PI / (2.0 * BLOCK_SIZE));
+                                        }
+                                    }
+                                    sum = 2 * sum / BLOCK_SIZE;
+                                    output[i * BLOCK_SIZE + j] = round(sum);
+                                }
+                                }
+                                
+                                 __global__ void performALL(float* input, float* output, float* output2, int width, int factor) {
+                                        // Obtener las coordenadas globales del hilo
+                                        int n = blockIdx.x * blockDim.x + threadIdx.x;
+                                        int m = blockIdx.y * blockDim.y + threadIdx.y;
+                                        
+                                        if (n &lt; 64 &amp;&amp; m &lt; 64){
+                                        
+                                            for (int u = 0; u &lt; BLOCK_SIZE; ++u) {
+                                                for (int v = 0; v &lt; BLOCK_SIZE; ++v) {
+                                        
+                                                    double cu = (u == 0) ? 1.0 : 2.0;
+                                                    double cv = (v == 0) ? 1.0 : 2.0;
+                                                    float sum = 0.0;
+                                                    for (int i = 0; i &lt; BLOCK_SIZE; ++i) {
+                                                        for (int j = 0; j &lt; BLOCK_SIZE; ++j) {
+                                                            sum += input[i * width + j + (n*width + m)*BLOCK_SIZE] *
+                                                                cos((2 * i + 1) * u * M_PI / (2.0 * BLOCK_SIZE)) *
+                                                                cos((2 * j + 1) * v * M_PI / (2.0 * BLOCK_SIZE));
+                                                        }
+                                                    }
+                                                    sum = sum * sqrt(cu) * sqrt(cv) / BLOCK_SIZE;
+                                        
+                                                    output[u * width + v + (n*width + m)*BLOCK_SIZE] = sum;
+                                                    output[u * width + v + (n*width + m)*BLOCK_SIZE] /= factor * luminanceQuantizationTable[u][v];
+                                                    output[u * width + v + (n*width + m)*BLOCK_SIZE] = round(output[u*width + v + (n*width + m)*BLOCK_SIZE]);
+                                                    output[u * width + v + (n*width + m)*BLOCK_SIZE] *= factor*luminanceQuantizationTable[u][v];
+                                                    output[u * width + v + (n*width + m)*BLOCK_SIZE] = round(output[u*width + v + (n*width + m)*BLOCK_SIZE]);
+                                                    
+                                                }
+                                            }
+                                        
+                                            for (int i = 0; i &lt; BLOCK_SIZE; ++i) {
+                                                for (int j = 0; j &lt; BLOCK_SIZE; ++j) {
+                                                    float sum = 0.0;
+                                                    
+                                                    for (int u = 0; u &lt; BLOCK_SIZE; ++u) {
+                                                        for (int v = 0; v &lt; BLOCK_SIZE; ++v) {
+                                                            double cu = (u == 0) ? 1/std::sqrt(2.0) : 1.0;
+                                                            double cv = (v == 0) ? 1/std::sqrt(2.0) : 1.0;
+                                                            sum += cu * cv * (output[u * width + v + (n*width + m)*BLOCK_SIZE]) *
+                                                                   std::cos((2 * i + 1) * u * M_PI / (2.0 * BLOCK_SIZE)) *
+                                                                   std::cos((2 * j + 1) * v * M_PI / (2.0 * BLOCK_SIZE));
+                                                        }
+                                                    }
+                                                    sum = 2 * sum / BLOCK_SIZE;
+                                                    output2[i * width + j + (n*width + m)*BLOCK_SIZE] = round(sum);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                
+                                void CheckCudaError(char sms[], int line) {
+                                cudaError_t error;
+                                error = cudaGetLastError();
+                                if (error) {
+                                printf("(ERROR) %s - %s in %s at line %d\n", sms, cudaGetErrorString(error), FILE, line);
+                                exit(EXIT_FAILURE);
+                                }
+
+                                float GetTime(void) {
+                                    struct timeval tim;
+                                    struct rusage ru;
+                                    getrusage(RUSAGE_SELF, &ru);
+                                    tim = ru.ru_utime;
+                                    return ((double)tim.tv_sec + (double)tim.tv_usec / 1000000.0) * 1000.0;
+                                }
+                                
+                                int main(int argc, char* argv[]) {
+                                    auto start_time = std::chrono::high_resolution_clock::now();
+                                    const char* fileIN;
+                                    const char* fileOUT;
+                                    unsigned char* image;
+                                    int width, height, pixelWidth;
+                                
+                                    unsigned int nThreads;
+                                
+                                    cudaEvent_t E0, E1, E2, E3, E4, E5;
+                                    float TiempoTotal, TiempoKernel, TiempoMemoriaHtoD, TiempoMemoriaDtoH;
+                                
+                                    float *h_input, *h_output, *h_output2;
+                                
+                                    if (argc == 3) {
+                                        fileIN = argv[1];
+                                        fileOUT = argv[2];
+                                    } else {
+                                        std::cout &lt;&lt; "Usage: ./exe fileIN fileOUT" &lt;&lt; std::endl;
+                                        std::exit(0);
+                                    }
+                                
+                                    nThreads = THREADS;
+                                
+                                    std::cout &lt;&lt; "Reading image..." &lt;&lt; std::endl;
+                                    image = stbi_load(fileIN, &amp;width, &amp;height, &amp;pixelWidth, 0);
+                                    if (!image) {
+                                        std::cerr &lt;&lt; "Couldn't load image." &lt;&lt; std::endl;
+                                        return -1;
+                                    }
+                                
+                                    std::cout &lt;&lt; "Image Read. Width : " &lt;&lt; width &lt;&lt; ", Height : " &lt;&lt; height &lt;&lt; ", nComp: " &lt;&lt; pixelWidth &lt;&lt; std::endl;
+                                
+                                    // Convert image to grayscale
+                                    std::vector&lt;unsigned char&gt; grayscaleImage(width * height);
+                                    for (int i = 0; i &lt; height; ++i) {
+                                        for (int j = 0; j &lt; width; ++j) {
+                                            int sum = 0;
+                                            for (int c = 0; c &lt; pixelWidth; ++c) {
+                                                sum += static_cast&lt;int&gt;(image[(i * width + j) * pixelWidth + c]);
+                                            }
+                                            grayscaleImage[i * width + j] = static_cast&lt;unsigned char&gt;(sum / pixelWidth);
+                                        }
+                                    }
+
+                                
+                                    std::cout &lt;&lt; "pixel " &lt;&lt; pixelWidth &lt;&lt; endl; 
+                                    stbi_write_png(fileOUT, width, height, pixelWidth, image,  pixelWidth * width * sizeof(unsigned char));
+                                    
+                                    std::vector&lt;unsigned char&gt; block_gen(height*width);
+                                    
+                                    cudaEventCreate(&amp;E0);
+                                    cudaEventCreate(&amp;E1);
+                                    cudaEventCreate(&amp;E2);
+                                    cudaEventCreate(&amp;E3);
+                                    cudaEventCreate(&amp;E4);
+                                    cudaEventCreate(&amp;E5);
+                                    
+                                    if (PINNED) {
+                                        // Obtiene Memoria [pinned] en el host
+                                        cudaMallocHost((void**)&amp;h_input, width * height * sizeof(float)); 
+                                        cudaMallocHost((void**)&amp;h_output, width * height * sizeof(float));
+                                    }
+                                    else {
+                                        // Obtener Memoria en el host
+                                        h_input = (float*) malloc(width * height * sizeof(float)); 
+                                        h_output = (float*) malloc(width * height * sizeof(float));
+                                        h_output2 = (float*) malloc(width * height * sizeof(float));
+                                    }
+                                    
+                                    // Copiar datos a la GPU
+                                    float* d_input;
+                                    float* d_output;
+                                    float* d_output2;
+                                    
+                                    cudaEventRecord(E0, 0);
+                                    cudaEventSynchronize(E0);
+                                    
+                                    cudaMalloc((void**)&amp;d_input, width * height * sizeof(float));
+                                    cudaMalloc((void**)&amp;d_output, width * height * sizeof(float));
+                                    cudaMalloc((void**)&amp;d_output2, width * height * sizeof(float));
+                                    CheckCudaError((char *) "Obtener Memoria en el device", __LINE__);
+                                    
+                                    // Copiar el bloque de la imagen al bloque de procesamiento
+                                    for (int u = 0; u &lt; width; ++u) {
+                                        for (int v = 0; v &lt; height; ++v) {
+                                            h_input[u * width + v] = static_cast&lt;float&gt;(grayscaleImage[u * width + v]);
+                                        }
+                                    }
+                                    
+                                    cudaMemcpy(d_input, h_input, width * height * sizeof(float), cudaMemcpyHostToDevice);
+                                    CheckCudaError((char *) "Copiar Datos Host --&gt; Device", __LINE__);
+                                    
+                                    dim3 dimGrid(2,2,1);
+                                    dim3 dimBlock(32,32, 1);
+                                    
+                                    performALL&lt;&lt;&lt;dimGrid, dimBlock&gt;&gt;&gt;(d_input, d_output, d_output2, width, 7);
+                                    CheckCudaError((char *) "Invocar Kernel", __LINE__);
+                                    
+                                    cudaMemcpy(h_output2, d_output2, width * height * sizeof(float), cudaMemcpyDeviceToHost);
+                                    CheckCudaError((char *) "Copiar Datos Device --&gt; Host", __LINE__);
+                                    
+                                    for (int i = 0; i &lt; width; ++i) {
+                                        for (int j = 0; j &lt; height; ++j) {
+                                            block_gen[i * width + j] = static_cast&lt;unsigned char&gt;(h_output2[i * width + j]);
+                                            //cout &lt;&lt; block_gen[i * width + j] &lt;&lt; endl;
+                                        }
+                                    }
+                                    
+                                    // Liberar memoria en la GPU
+                                    cudaFree(d_input);
+                                    cudaFree(d_output);
+                                    if (PINNED) {
+                                        cudaFreeHost(h_input);
+                                        cudaFreeHost(h_output);
+                                    } else {
+                                        free(h_input);
+                                        free(h_output);
+                                    }
+                                    
+                                    cudaDeviceSynchronize();
+                                    
+                                    cudaEventRecord(E3, 0);
+                                    cudaEventSynchronize(E3);
+                                    
+                                    cudaEventElapsedTime(&amp;TiempoTotal,  E0, E3);
+                                    //cudaEventElapsedTime(&amp;TiempoKernel, E1, E2);
+                                    //cudaEventElapsedTime(&amp;TiempoMemoriaHtoD, E4, E1);
+                                    //cudaEventElapsedTime(&amp;TiempoMemoriaDtoH, E2, E5);
+                                    
+                                    cudaEventDestroy(E0); cudaEventDestroy(E1); cudaEventDestroy(E2); cudaEventDestroy(E3);
+                                    cudaEventDestroy(E4); cudaEventDestroy(E5);
+                                    
+                                    stbi_write_png(fileOUT, width, height, 1, block_gen.data(), width * sizeof(unsigned char));
+                                    stbi_image_free(image);
+                                    
+                                    printf("Tiempo Paralelo Global: %4.6f milseg\n", TiempoTotal);
+                                    //printf("Tiempo Paralelo Kernel: %4.6f milseg\n", TiempoKernel);
+                                    //printf("Tiempo Transferencia Memoria: %4.6f milseg\n", TiempoMemoriaHtoD + TiempoMemoriaDtoH);
+
+                                    //auto end_time = std::chrono::high_resolution_clock::now();
+                                    //auto duration = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(end_time - start_time);
+
+                                    // Imprime el tiempo de ejecución
+                                    //std::cout &lt;&lt; "Tiempo de ejecucion: " &lt;&lt; duration.count() &lt;&lt; " milisegundos" &lt;&lt; std::endl;
+
+                                    return 0;
+                                    }
+
+                                    void CheckCudaError(char sms[], int line) {
+                                    cudaError_t error;
+
+                                    /* Uncomment for kernel debugging. Beware! It forces synchronous kernel execution */
+                                    // #define DEBUG 1
+                                    #ifndef DEBUG
+                                    #define DEBUG 0
+                                    #endif
+                                    if (DEBUG) cudaDeviceSynchronize();
+                                    error = cudaGetLastError();
+                                    if (error) {
+                                        printf("(ERROR) %s - %s in %s at line %d\n", sms, cudaGetErrorString(error), __FILE__, line);
+                                        exit(EXIT_FAILURE);
+                                    }
+                                    }
+                                                                    
+
+
+
+
+
+                                }
+                                </code></pre>
+                    
+
+
+                    
+                    </div>
+</body>
